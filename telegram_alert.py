@@ -1,5 +1,3 @@
-# telegram_alert.py
-
 import requests
 from config import TELEGRAM_TOKEN, CHAT_ID
 
