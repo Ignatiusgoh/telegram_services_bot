@@ -10,7 +10,7 @@ async def status(update: Update, context: ContextTypes.DEFAULT_TYPE):
         search = f"{svc['folder']}/{svc['script']}"
         result = subprocess.getoutput(f"pgrep -af '{search}'")
         running = "✅ RUNNING" if svc['script'] in result else "❌ STOPPED"
-        msg += f"{name}: {running}\n"
+        msg += f"{name}: {running}\n" + result 
     await update.message.reply_text(msg)
 
 # /logs command
