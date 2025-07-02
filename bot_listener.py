@@ -29,13 +29,14 @@ async def status(update: Update, context: ContextTypes.DEFAULT_TYPE) -> bool:
 
             # Find child processes of the pane (bash), if any
             children = subprocess.getoutput(f"pgrep -P {pane_pid}").splitlines()
-
-            for child_pid in children:
-                cmd = subprocess.getoutput(f"ps -p {child_pid} -o cmd=").strip()
+            
+            if children:
+                # for child_pid in children:
+                cmd = subprocess.getoutput(f"ps -p {children[0]} -o cmd=").strip()
                 if "python" in cmd:
                     msg += f"{name}: ✅ RUNNING\n" # Python script is running inside tmux window
-                else:
-                    msg += f"{name}: ❌ STOPPED\n" # No Python process under that pane
+            else:
+                msg += f"{name}: ❌ STOPPED\n" # No Python process under that pane
 
     except Exception as e:
         await update.message.reply_text(f"Error checking window: {e}")
