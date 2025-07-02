@@ -19,9 +19,10 @@ async def status(update: Update, context: ContextTypes.DEFAULT_TYPE) -> bool:
         # Get all tmux windows
         windows = subprocess.getoutput("tmux list-windows -a").splitlines()
         for win in windows:
+            
             session_win = win.split(":")[0] + ":" + win.split(":")[1].split()[0]
             name_split = win.split(":")[2]
-            name = name_split(" ")[1]
+            name = name_split.strip().split()[0]
 
             # Get the PID of the pane (the bash shell)
             pane_pid = subprocess.getoutput(f"tmux list-panes -t {session_win} -F '#{{pane_pid}}'").strip()
