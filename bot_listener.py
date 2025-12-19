@@ -3,16 +3,6 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from config import TELEGRAM_TOKEN, SERVICES
 
-# /status command
-# async def status(update: Update, context: ContextTypes.DEFAULT_TYPE):
-#     msg = ""
-#     for name, svc in SERVICES.items():
-#         search = f"{svc['folder']}/{svc['script']}"
-#         result = subprocess.getoutput(f"pgrep -af '{search}'")
-#         running = "✅ RUNNING" if svc['script'] in result else "❌ STOPPED"
-#         msg += f"{name}: {running}\n" + result 
-#     await update.message.reply_text(msg)
-
 async def status(update: Update, context: ContextTypes.DEFAULT_TYPE) -> bool:
     msg = ""
     try:

@@ -1,18 +1,18 @@
 SERVICES = {
-    "Trade_executor": {
+    "trade_execution": {
         "script": "main.py",
-        "folder": "/root/Bollinger_band_entry_public",
-        "log": "/root/Bollinger_band_entry_public/execution.log"
+        "folder": "/root/rv_trailing_stop_entry",
+        "log": "/root/rv_trailing_stop_entry/execution.log"
     },
-    "Listener": {
+    "event_listener": {
         "script": "main.py",
         "folder": "/root/binance-event-listener/src",
         "log": "/root/binance-event-listener/src/binance_event_listener.log"
     },
-    "Breakeven_adjuster": {
+    "adjuster": {
         "script": "main.py",
-        "folder": " /root/breakeven-adjuster/src",
-        "log": "/root/breakeven-adjuster/src/breakeven_adjuster.log"
+        "folder": " /root/adjuster/src",
+        "log": "/root/adjuster/src/breakeven_adjuster.log"
     }
 }
 
